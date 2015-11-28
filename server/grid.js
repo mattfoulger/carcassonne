@@ -8,10 +8,15 @@ export default function (r = 18, c = 18) {
       board[i].push({
         position: {x: i, y: j},
         contents: "empty",
-        edgeTop: "empty",
-        edgeRight: "empty",
-        edgeBottom: "empty",
-        edgeLeft: "empty",
+        edges: {
+          top: "empty",
+          right: "empty",
+          bottom: "empty",
+          left: "empty",
+          owner: "",
+          status: "",
+          rotation: 1
+        }
       })
     }
   }

@@ -4,7 +4,7 @@ export const INITIAL_STATE = Map();
 
 export function initializeGame(state, tileset, players, board, startingTile) {
   
-  const deck = List(tileset);
+  const deck = fromJS(tileset);
   const playerList = List(players);
   const currentPlayer = playerList.last();
   const grid = fromJS(board);
@@ -38,6 +38,14 @@ export function placeTile(boardState, position, tile) {
   }
 }
 
+export function commitTile(boardState, position, tile) {
+  const contents = boardState.getIn([position.x, position.y, 'contents']);
+  if (contents != "empty") {
+    return boardState.setIn([position.x, position.y, 'contents'], tile)
+                     .setIn([position.x, position.y, 'edges'], tile.edges);
+  }
+}
+
 export function endTurn(state, player) {
   var nextPlayer, index;
   const currentPlayer = state.get('currentPlayer');
@@ -50,7 +58,9 @@ export function endTurn(state, player) {
       nextPlayer = players.get(0);
     }
   }
+
   return state.set('currentPlayer', nextPlayer)
+              .setIn(["topTile", "owner"], nextPlayer);
 };
 
 

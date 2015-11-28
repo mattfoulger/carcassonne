@@ -5,206 +5,351 @@ export default function () {
   tiles = {
     tile001: {
       name: "tile-001",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "CITY"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "CITY"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile002: {
       name: "tile-002",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile003: {
       name: "tile-003",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile004: {
       name: "tile-004",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile005: {
       name: "tile-005",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile006: {
       name: "tile-006",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "FIELD",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "FIELD",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile007: {
       name: "tile-006",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "FIELD",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "FIELD",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile008: {
       name: "tile-007",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "FIELD",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "FIELD",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile009: {
       name: "tile-008",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile010: {
       name: "tile-010",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile011: {
       name: "tile-011",
-      edgeTop: "CITY",
-      edgeRight: "FIELD",
-      edgeBottom: "CITY",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "FIELD",
+        bottom: "CITY",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile012: {
       name: "tile-012",
-      edgeTop: "CITY",
-      edgeRight: "FIELD",
-      edgeBottom: "CITY",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "FIELD",
+        bottom: "CITY",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile013: {
       name: "tile-013",
-      edgeTop: "CITY",
-      edgeRight: "FIELD",
-      edgeBottom: "CITY",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "FIELD",
+        bottom: "CITY",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile014: {
       name: "tile-014",
-      edgeTop: "CITY",
-      edgeRight: "FIELD",
-      edgeBottom: "FIELD",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "FIELD",
+        bottom: "FIELD",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile015: {
       name: "tile-015",
-      edgeTop: "CITY",
-      edgeRight: "FIELD",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "FIELD",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile016: {
       name: "tile-016",
-      edgeTop: "CITY",
-      edgeRight: "ROAD",
-      edgeBottom: "FIELD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "ROAD",
+        bottom: "FIELD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile017: {
       name: "tile-017",
-      edgeTop: "CITY",
-      edgeRight: "ROAD",
-      edgeBottom: "ROAD",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "CITY",
+        right: "ROAD",
+        bottom: "ROAD",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile018: {
       name: "tile-018",
-      edgeTop: "CITY",
-      edgeRight: "ROAD",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "CITY",
+        right: "ROAD",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile019: {
       name: "tile-019",
-      edgeTop: "FIELD",
-      edgeRight: "FIELD",
-      edgeBottom: "FIELD",
-      edgeLeft: "FIELD"
+      edges: {
+        top: "FIELD",
+        right: "FIELD",
+        bottom: "FIELD",
+        left: "FIELD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile020: {
       name: "tile-020",
-      edgeTop: "FIELD",
-      edgeRight: "FIELD",
-      edgeBottom: "FIELD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "FIELD",
+        right: "FIELD",
+        bottom: "FIELD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile021: {
       name: "tile-021",
-      edgeTop: "FIELD",
-      edgeRight: "FIELD",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "FIELD",
+        right: "FIELD",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile022: {
       name: "tile-022",
-      edgeTop: "FIELD",
-      edgeRight: "ROAD",
-      edgeBottom: "FIELD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "FIELD",
+        right: "ROAD",
+        bottom: "FIELD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile023: {
       name: "tile-023",
-      edgeTop: "FIELD",
-      edgeRight: "ROAD",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "FIELD",
+        right: "ROAD",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile024: {
       name: "tile-024",
-      edgeTop: "ROAD",
-      edgeRight: "ROAD",
-      edgeBottom: "ROAD",
-      edgeLeft: "ROAD"
+      edges: {
+        top: "ROAD",
+        right: "ROAD",
+        bottom: "ROAD",
+        left: "ROAD"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile025: {
       name: "tile-025",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "CITY"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "CITY"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile026: {
       name: "tile-026",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "CITY"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "CITY"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile027: {
       name: "tile-027",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "CITY"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "CITY"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile028: {
       name: "tile-028",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "CITY"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "CITY"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     },
     tile029: {
       name: "tile-029",
-      edgeTop: "CITY",
-      edgeRight: "CITY",
-      edgeBottom: "CITY",
-      edgeLeft: "CITY"
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "CITY",
+        left: "CITY"
+      },
+      owner: "blah",
+      status: "",
+      rotation: 1
     }
   };
 
