@@ -1,0 +1,182 @@
+$tile-012: 0px 0px 88px 88px;
+$tile-000: 0px -88px 88px 88px;
+$tile-002: 0px -176px 88px 88px;
+$tile-003: 0px -264px 88px 88px;
+$tile-004: 0px -352px 88px 88px;
+$tile-005: 0px -440px 88px 88px;
+$tile-006: 0px -528px 88px 88px;
+$tile-007: 0px -616px 88px 88px;
+$tile-008: 0px -704px 88px 88px;
+$tile-009: 0px -792px 88px 88px;
+$tile-010: 0px -880px 88px 88px;
+$tile-011: 0px -968px 88px 88px;
+$tile-001: 0px -1056px 88px 88px;
+$tile-013: 0px -1144px 88px 88px;
+$tile-014: 0px -1232px 88px 88px;
+$tile-015: 0px -1320px 88px 88px;
+$tile-016: 0px -1408px 88px 88px;
+$tile-017: 0px -1496px 88px 88px;
+$tile-018: 0px -1584px 88px 88px;
+$tile-019: 0px -1672px 88px 88px;
+$tile-020: 0px -1760px 88px 88px;
+$tile-021: 0px -1848px 88px 88px;
+$tile-022: 0px -1936px 88px 88px;
+$tile-023: 0px -2024px 88px 88px;
+$tile-024: 0px -2112px 88px 88px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@function sprite-width($sprite) {
+  @return nth($sprite, 3);
+}
+
+@function sprite-height($sprite) {
+  @return nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: inline-block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.tile-012 {
+  @include sprite($tile-012);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-000 {
+  @include sprite($tile-000);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-002 {
+  @include sprite($tile-002);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-003 {
+  @include sprite($tile-003);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-004 {
+  @include sprite($tile-004);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-005 {
+  @include sprite($tile-005);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-006 {
+  @include sprite($tile-006);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-007 {
+  @include sprite($tile-007);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-008 {
+  @include sprite($tile-008);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-009 {
+  @include sprite($tile-009);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-010 {
+  @include sprite($tile-010);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-011 {
+  @include sprite($tile-011);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-001 {
+  @include sprite($tile-001);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-013 {
+  @include sprite($tile-013);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-014 {
+  @include sprite($tile-014);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-015 {
+  @include sprite($tile-015);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-016 {
+  @include sprite($tile-016);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-017 {
+  @include sprite($tile-017);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-018 {
+  @include sprite($tile-018);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-019 {
+  @include sprite($tile-019);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-020 {
+  @include sprite($tile-020);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-021 {
+  @include sprite($tile-021);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-022 {
+  @include sprite($tile-022);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-023 {
+  @include sprite($tile-023);
+  background-image: url('../src/images/sprite-tile.png');
+}
+
+.tile-024 {
+  @include sprite($tile-024);
+  background-image: url('../src/images/sprite-tile.png');
+}
+

@@ -1,0 +1,11 @@
+@import 'sprite-tile.scss';
+
+li.tile {
+  display: inline-block;
+  width: 88px;
+  height: 88px;
+}
+
+.tile001 {
+  background: url(../src/images/tiles_sprite.png) -176px 0px;
+}
