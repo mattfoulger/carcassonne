@@ -13,10 +13,30 @@ export default React.createClass({
       return "";
     }
   },
+  getTileId: function() {
+    if (this.props.tile) {
+      return this.props.tile.get('id');
+    } else {
+      return "";
+    }
+  },
+  getTileStatus: function() {
+    if (this.props.tile) {
+      return this.props.tile.get('status');
+    } else {
+      return "";
+    }
+  },
+  clickTile: function() {
+    if (this.getTileStatus() === "unplayed") {
+      return this.props.selectTile(this.props.tile);
+    }
+  },
   render: function() {
-    console.log(this.props.tile);
-    var tileClass = classNames("tile", this.getTileName());
-    return <li className={tileClass}>{this.getTileName()}</li>
+    var tileClass = classNames("tile", this.getTileName(), this.getTileStatus());
+    return <div className={tileClass} onClick={() => this.clickTile()}>
+      {this.getTileName()} <br/>
+      id: {this.getTileId()}
+      </div>
   }
 });
-

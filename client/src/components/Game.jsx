@@ -2,7 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import Deck from './Deck';
-import Hand from './Hand';
+import Hands from './Hands';
 import Board from './Board';
 import * as actionCreators from '../action_creators';
 
@@ -14,18 +14,17 @@ export const Game = React.createClass({
   render: function() {
     return <div>
       <Deck deck={this.props.deck}
-            topTile={this.props.topTile} />
-      {this.getPlayers().map(player =>
-        <Hand hand={this.props.hands.get(player)}
-              player={player}/>
-      )}
+            topTile={this.props.topTile}
+            selectTile={this.props.selectTile}/>
+      <Hands hands={this.props.hands} 
+             selectTile={this.props.selectTile}/>
       <button
         onClick={() => this.props.drawTile(this.props.currentPlayer)}>
-        <h2>Draw a tile</h2>
+        Draw a tile
       </button>
       <button
         onClick={() => this.props.endTurn(this.props.currentPlayer)}>
-        <h2>End turn</h2>
+        End turn
       </button>
       <Board board={this.props.board} placeTile={this.props.placeTile} />
     </div>;

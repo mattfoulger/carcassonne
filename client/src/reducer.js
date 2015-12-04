@@ -8,7 +8,8 @@ function setConnectionState(state, connectionState, connected) {
 }
 
 function setState(state, newState) {
-  return state.merge(newState);
+  console.log("setState");
+  return state.mergeDeep(newState);
 }
 
 
@@ -21,10 +22,6 @@ export default function(state = Map(), action) {
     return setConnectionState(state, action.state, action.connected);
   case 'SET_STATE':
     return setState(state, action.state);
-  // case 'DRAW_TILE':
-  //   return setState(state, action.state);
-  case 'END_TURN':
-    return setState(state, action.state)
   }
   return state;
 }

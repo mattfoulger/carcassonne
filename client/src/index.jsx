@@ -15,11 +15,12 @@ import {GameContainer} from './components/Game';
 import { devTools, persistState } from 'redux-devtools';
 // React components for Redux DevTools
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
-import SliderMonitor from 'redux-slider-monitor';
+import DiffMonitor from 'redux-devtools-diff-monitor';
 
 require('./style.css');
 
 const socket = io(`${location.protocol}//${location.hostname}:3050`);
+
 socket.on('state', state =>
   store.dispatch(setState(state))
 );
@@ -57,16 +58,10 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>{routes}</Router>
     </Provider>
-    <DebugPanel top right bottom>
-      <DevTools store={store} monitor={LogMonitor} />
-    </DebugPanel>
   </div>,
   document.getElementById('app')
 );
 
-// <DebugPanel left right bottom>
-    //   <DevTools store={store}
-    //             keyboardEnabled // if you want keyboard shortcuts
-    //             monitor={SliderMonitor}
-    //   />
-    // </DebugPanel>
+// <DebugPanel top right bottom>
+//       <DevTools store={store} monitor={LogMonitor} shortcut='ctrl+d'/>
+//     </DebugPanel>

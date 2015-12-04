@@ -12,7 +12,7 @@ export default React.createClass({
     var cell = this.props.cell;
     var cellContents;
     if ( cell && cell.get('contents') != "empty" ) {
-      cellContents = <Tile tile={cell.get('contents')} />;
+      cellContents = <Tile tile={cell.get('contents')} key={cell.getIn('contents', 'id')}/>;
     } else {
       cellContents = "empty";
     }

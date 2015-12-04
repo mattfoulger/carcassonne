@@ -29,11 +29,18 @@ export function drawTile(player) {
 }
 
 export function placeTile(position) {
-  console.log(position)
   return {
     meta: {remote: true},
     type: 'PLACE_TILE',
     position: position
+  };
+}
+
+export function selectTile(tile) {
+  return {
+    meta: {remote: true},
+    type: 'SELECT_TILE',
+    tile: tile
   };
 }
 

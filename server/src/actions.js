@@ -11,7 +11,7 @@ export function initializeGame(state, tileset, players, board, startingTile) {
   const hands = Map(players.map(function(player) {return [ player, List([]) ] } ))
   return state.set('deck', deck.pop())
               .set('initialDeck', deck)
-              .set('topTile', deck.last())
+              .set('topTile', deck.last().set('owner', currentPlayer))
               .set('players', playerList)
               .set('hands', hands)
               .set('board', grid.setIn(["0", "0", "contents"], startingTile))
@@ -20,7 +20,7 @@ export function initializeGame(state, tileset, players, board, startingTile) {
 
 export function drawTile(state, player) {
   const deck = state.get('deck');
-  const topTile = state.get('topTile');
+  const topTile = state.get('topTile').set('owner', player);
   const hand = state.getIn(['hands', player]);
   if (topTile && hand.size < 3) {
     return state.set('deck', deck.pop())
@@ -31,10 +31,21 @@ export function drawTile(state, player) {
   }
 };
 
-export function placeTile(boardState, position, tile) {
-  const contents = boardState.getIn([position.x, position.y, 'contents']);
+export function selectTile(state, tile) {
+  const owner = tile.owner;
+  const hand = state.getIn(['hands', owner]);
+  const tileIndex = hand.indexOf(fromJS(tile));
+  return state.setIn(['hands', owner, tileIndex, 'status'], 'selected');
+}
+
+export function placeTile(state, position, tile) {
+  const placedTile = tile.set('status', 'placed');
+  const contents = state.getIn(['board', position.x, position.y, 'contents']);
   if (contents === "empty") {
-    return boardState.setIn([position.x, position.y, 'contents'], tile);
+    console.log("placeTile");
+    return state.setIn(['board', position.x, position.y, 'contents'], placedTile);
+  } else {
+    return state;
   }
 }
 
@@ -42,7 +53,9 @@ export function commitTile(boardState, position, tile) {
   const contents = boardState.getIn([position.x, position.y, 'contents']);
   if (contents != "empty") {
     return boardState.setIn([position.x, position.y, 'contents'], tile)
-                     .setIn([position.x, position.y, 'edges'], tile.edges);
+                     .setIn([position.x, position.y, 'edges'], tile.get('edges'));
+  } else {
+    return boardState;
   }
 }
 

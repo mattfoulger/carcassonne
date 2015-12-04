@@ -1,14 +1,18 @@
-import {List, Map} from 'immutable';
+import {List, Map, fromJS} from 'immutable';
 import tiles from './tiles';
 
-var allTiles = tiles();
+const allTiles = fromJS(tiles());
 
 export function tileset (options) {
   var deck = [];
+  var key = 2;
 
   function addTile (tilename, amount) {
     for (var i = 0; i < amount; i++) {
-      deck.push(allTiles[tilename])
+      key += 1;
+      const tile = allTiles.get(tilename);
+      const tileWithId = tile.set('id', key);
+      deck.push(tileWithId);
     }
   }
 
@@ -44,5 +48,7 @@ export function tileset (options) {
 };
 
 export function startingTile () {
-  return allTiles["tile016"];
+  const startTile = allTiles.get("tile016");
+  const startTileWithId = startTile.set('id', 1).set('status', 'committed');
+  return startTileWithId;
 }

@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var sprite = require('sprite-webpack-plugin');
+var bourbon = require('node-bourbon').includePaths;
 
 module.exports = {
   entry: [
@@ -17,7 +18,7 @@ module.exports = {
       loader: 'style!css!autoprefixer?browsers=last 2 versions'
     }, {
       test: /\.scss$/,
-      loaders: ['style', 'css', 'sass']
+      loader: "style!css!sass?includePaths[]=" + bourbon
     },{
       test: /\.png$/,
       loader: "url-loader",

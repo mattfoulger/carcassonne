@@ -12,10 +12,7 @@ export default function (r = 18, c = 18) {
           top: "empty",
           right: "empty",
           bottom: "empty",
-          left: "empty",
-          owner: "",
-          status: "",
-          rotation: 1
+          left: "empty"
         }
       })
     }

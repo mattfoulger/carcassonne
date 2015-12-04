@@ -20,7 +20,7 @@ export default React.createClass({
   },
 
   render: function() {
-    return <div className="deckContainer">
+    return <div className="deck">
       <div>({this.getDeckSize()}) remaining</div>
       <Tile tile={this.props.topTile}/>
     </div>;

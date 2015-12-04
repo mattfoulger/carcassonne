@@ -12,7 +12,7 @@ export default function () {
         left: "CITY"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile002: {
@@ -24,7 +24,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile003: {
@@ -36,7 +36,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile004: {
@@ -48,7 +48,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile005: {
@@ -60,7 +60,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile006: {
@@ -72,7 +72,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile007: {
@@ -84,7 +84,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile008: {
@@ -96,7 +96,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile009: {
@@ -108,7 +108,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile010: {
@@ -120,7 +120,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile011: {
@@ -132,7 +132,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile012: {
@@ -144,7 +144,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile013: {
@@ -156,7 +156,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile014: {
@@ -168,7 +168,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile015: {
@@ -180,7 +180,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile016: {
@@ -192,7 +192,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile017: {
@@ -204,7 +204,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile018: {
@@ -216,7 +216,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile019: {
@@ -228,7 +228,7 @@ export default function () {
         left: "FIELD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile020: {
@@ -240,7 +240,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile021: {
@@ -252,7 +252,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile022: {
@@ -264,7 +264,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile023: {
@@ -276,7 +276,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile024: {
@@ -288,7 +288,7 @@ export default function () {
         left: "ROAD"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile025: {
@@ -300,7 +300,7 @@ export default function () {
         left: "CITY"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile026: {
@@ -312,7 +312,7 @@ export default function () {
         left: "CITY"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile027: {
@@ -324,7 +324,7 @@ export default function () {
         left: "CITY"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile028: {
@@ -336,7 +336,7 @@ export default function () {
         left: "CITY"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     },
     tile029: {
@@ -348,7 +348,7 @@ export default function () {
         left: "CITY"
       },
       owner: "blah",
-      status: "",
+      status: "unplayed",
       rotation: 1
     }
   };

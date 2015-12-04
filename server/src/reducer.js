@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import {INITIAL_STATE, initializeGame, drawTile, placeTile, endTurn} from './actions';
+import {INITIAL_STATE, initializeGame, drawTile, placeTile, selectTile, endTurn} from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -8,7 +8,9 @@ export default function reducer(state = INITIAL_STATE, action) {
   case 'DRAW_TILE':
     return drawTile(state, action.player);
   case 'PLACE_TILE':
-    return state.update('board', boardState => placeTile(boardState, action.position, state.get('topTile')))
+    return placeTile(state, action.position, state.get('topTile'));
+  case 'SELECT_TILE':
+    return selectTile(state, action.tile)
   case 'END_TURN':
     return endTurn(state, action.player);
   }
