@@ -4,18 +4,20 @@ import tiles from './tiles';
 const allTiles = fromJS(tiles());
 
 export function tileset (options) {
-  var deck = [];
-  var key = 2;
+  var deck = {};
+  var key = 0;
 
   function addTile (tilename, amount) {
     for (var i = 0; i < amount; i++) {
       key += 1;
       const tile = allTiles.get(tilename);
-      const tileWithId = tile.set('id', key);
-      deck.push(tileWithId);
+      deck[key] = tile;
     }
   }
+  // add starting tile
+  addTile("tile016", 1);
 
+  // add base game tiles
   if (options.base) {
     addTile("tile001", 1);
     addTile("tile002", 3);
@@ -46,9 +48,3 @@ export function tileset (options) {
   return deck;
 
 };
-
-export function startingTile () {
-  const startTile = allTiles.get("tile016");
-  const startTileWithId = startTile.set('id', 1).set('status', 'committed');
-  return startTileWithId;
-}

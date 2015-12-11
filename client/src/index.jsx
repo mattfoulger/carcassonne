@@ -58,10 +58,11 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>{routes}</Router>
     </Provider>
+    <DebugPanel top right bottom>
+      <DevTools store={store} monitor={LogMonitor} shortcut='ctrl+d'/>
+    </DebugPanel>
   </div>,
   document.getElementById('app')
 );
 
-// <DebugPanel top right bottom>
-//       <DevTools store={store} monitor={LogMonitor} shortcut='ctrl+d'/>
-//     </DebugPanel>
+

@@ -2,30 +2,25 @@ import {List, Map, fromJS} from 'immutable';
 
 export const INITIAL_STATE = Map();
 
-export function initializeGame(state, tileset, players, board, startingTile) {
-  
-  const deck = fromJS(tileset);
-  const playerList = List(players);
-  const currentPlayer = playerList.last();
+export function initializeGame(state, tileset, players, board) {
+  const tiles = fromJS(tileset);
+  const deck = List(shuffle(tiles.remove(1).keySeq().toArray()));
+  const playerState = fromJS(players);
+  const currentPlayer = 1;
   const grid = fromJS(board);
-  const hands = Map(players.map(function(player) {return [ player, List([]) ] } ))
-  return state.set('deck', deck.pop())
-              .set('initialDeck', deck)
-              .set('topTile', deck.last().set('owner', currentPlayer))
-              .set('players', playerList)
-              .set('hands', hands)
-              .set('board', grid.setIn(["0", "0", "contents"], startingTile))
+  return state.set('tiles', tiles)
+              .set('deck', deck)
+              .set('players', playerState)
+              .set('board', grid.setIn(["0", "0", "contents"], 1))
               .set('currentPlayer', currentPlayer);
 };
 
-export function drawTile(state, player) {
-  const deck = state.get('deck');
-  const topTile = state.get('topTile').set('owner', player);
-  const hand = state.getIn(['hands', player]);
+export function drawTile(state, playerID) {
+  const topTile = state.get('deck').last();
+  const hand = state.getIn(['players', playerID, 'hand']);
   if (topTile && hand.size < 3) {
     return state.set('deck', deck.pop())
-                .set('topTile', deck.last())
-                .setIn(['hands', player], hand.unshift(topTile));
+                .setIn(['players', playerID, 'hand'], hand.unshift(topTile));
   } else {
     return state;
   }
@@ -38,12 +33,11 @@ export function selectTile(state, tile) {
   return state.setIn(['hands', owner, tileIndex, 'status'], 'selected');
 }
 
-export function placeTile(state, position, tile) {
-  const placedTile = tile.set('status', 'placed');
+export function placeTile(state, tileID, position) {
   const contents = state.getIn(['board', position.x, position.y, 'contents']);
   if (contents === "empty") {
-    console.log("placeTile");
-    return state.setIn(['board', position.x, position.y, 'contents'], placedTile);
+    return state.setIn(['board', position.x, position.y, 'contents'], tileID)
+                .setIn(['tiles', tileID, 'status'], 'placed');
   } else {
     return state;
   }
@@ -76,5 +70,17 @@ export function endTurn(state, player) {
               .setIn(["topTile", "owner"], nextPlayer);
 };
 
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
 
 
