@@ -16,6 +16,8 @@ export default React.createClass({
             <Cell cell={cell} placeTile={this.props.placeTile}/>
           )}
         </div>
+    } else {
+      return null
     }
   }
 });

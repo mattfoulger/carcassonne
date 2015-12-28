@@ -8,8 +8,8 @@ require('../../sass/Board.scss');
 export default React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
-    var board = this.props.board || [];
-    if (board.size > 0) {
+    var board = this.props.board
+    if (board) {
       return <div className="board">
         {board.map(column =>
           <Column column={column} placeTile={this.props.placeTile} />

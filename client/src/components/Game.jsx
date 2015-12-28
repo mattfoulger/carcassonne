@@ -1,11 +1,11 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
-import {DeckContainer} from './Deck';
+import Deck from './Deck';
 import Hands from './Hands';
 import Board from './Board';
 import * as actionCreators from '../action_creators';
-
+import {deckSelector, boardSelector} from '../selectors';
 
 export const Game = React.createClass({
   mixins: [PureRenderMixin],
@@ -13,39 +13,42 @@ export const Game = React.createClass({
     return this.props.players || [];
   },
   render: function() {
-    return <div>
-      <DeckContainer selectTile={this.props.selectTile}/>
-      
-      <button
-        onClick={() => this.props.drawTile(this.props.currentPlayer)}>
-        Draw a tile
-      </button>
-      <button
-        onClick={() => this.props.endTurn(this.props.currentPlayer)}>
-        End turn
-      </button>
-      
-    </div>;
+    if (this.props.deck) {
+      return <div>
+        <Deck deck={this.props.deck}
+              selectTile={this.props.selectTile}/>
+        <Board board={this.props.board} placeTile={this.props.placeTile} />
+        
+        <button
+          onClick={() => this.props.drawTile(this.props.currentPlayer)}>
+          Draw a tile
+        </button>
+        <button
+          onClick={() => this.props.endTurn(this.props.currentPlayer)}>
+          End turn
+        </button>
+        
+      </div>;
+    } else {
+      return null
+    }
   }
 });
 
-// <Hands hands={this.props.hands} 
+// <Hands hands={this.props.hands}
 //              selectTile={this.props.selectTile}/>
-// <Board board={this.props.board} placeTile={this.props.placeTile} />
 
 function mapStateToProps(state) {
   return {
-    // deck: state.get('deck'),
-    topTile: state.get('topTile'),
-    hands: state.get('hands'),
+    deck: deckSelector(state),
+    tiles: state.get('tiles'),
     players: state.get('players'),
     currentPlayer: state.get('currentPlayer'),
-    board: state.get('board')
+    board: boardSelector(state)
   };
 }
 
 export const GameContainer = connect(
-  // deckTilesSelector,
   mapStateToProps,
   actionCreators
 )(Game);

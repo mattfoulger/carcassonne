@@ -11,7 +11,7 @@ export default function () {
         bottom: "CITY",
         left: "CITY"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -23,7 +23,7 @@ export default function () {
         bottom: "CITY",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -35,7 +35,7 @@ export default function () {
         bottom: "CITY",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -47,7 +47,7 @@ export default function () {
         bottom: "CITY",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -59,7 +59,7 @@ export default function () {
         bottom: "CITY",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -71,7 +71,7 @@ export default function () {
         bottom: "FIELD",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -83,7 +83,7 @@ export default function () {
         bottom: "FIELD",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -95,7 +95,7 @@ export default function () {
         bottom: "FIELD",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -107,7 +107,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -119,7 +119,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -131,7 +131,7 @@ export default function () {
         bottom: "CITY",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -143,7 +143,7 @@ export default function () {
         bottom: "CITY",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -155,7 +155,7 @@ export default function () {
         bottom: "CITY",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -167,7 +167,7 @@ export default function () {
         bottom: "FIELD",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -179,7 +179,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -191,7 +191,7 @@ export default function () {
         bottom: "FIELD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -203,7 +203,7 @@ export default function () {
         bottom: "ROAD",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -215,7 +215,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -227,7 +227,7 @@ export default function () {
         bottom: "FIELD",
         left: "FIELD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -239,7 +239,7 @@ export default function () {
         bottom: "FIELD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -251,7 +251,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -263,7 +263,7 @@ export default function () {
         bottom: "FIELD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -275,7 +275,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -287,7 +287,7 @@ export default function () {
         bottom: "ROAD",
         left: "ROAD"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -299,7 +299,7 @@ export default function () {
         bottom: "CITY",
         left: "CITY"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -311,7 +311,7 @@ export default function () {
         bottom: "CITY",
         left: "CITY"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -323,7 +323,7 @@ export default function () {
         bottom: "CITY",
         left: "CITY"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -335,7 +335,7 @@ export default function () {
         bottom: "CITY",
         left: "CITY"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     },
@@ -347,7 +347,7 @@ export default function () {
         bottom: "CITY",
         left: "CITY"
       },
-      owner: "blah",
+      owner: "",
       status: "unplayed",
       rotation: 1
     }

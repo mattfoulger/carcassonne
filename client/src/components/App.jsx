@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-import { ConnectionStateContainer } from './ConnectionState';
+import {ConnectionStateContainer} from './ConnectionState';
 
 export default React.createClass({
   mixins: [PureRenderMixin],

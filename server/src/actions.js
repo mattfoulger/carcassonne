@@ -11,7 +11,7 @@ export function initializeGame(state, tileset, players, board) {
   return state.set('tiles', tiles)
               .set('deck', deck)
               .set('players', playerState)
-              .set('board', grid.setIn(["0", "0", "contents"], 1))
+              .set('board', grid.setIn(["0", "0", "contents"], '1'))
               .set('currentPlayer', currentPlayer);
 };
 

@@ -34,9 +34,13 @@ export default React.createClass({
   },
   render: function() {
     var tileClass = classNames("tile", this.getTileName(), this.getTileStatus());
-    return <div className={tileClass} onClick={() => this.clickTile()}>
-      {this.getTileName()} <br/>
-      id: {this.getTileId()}
-      </div>
+    if (this.props.tile) {
+      return <div className={tileClass} onClick={() => this.clickTile()}>
+        {this.getTileName()} <br/>
+        id: {this.getTileId()}
+        </div>
+    } else {
+      return null
+    }
   }
 });
