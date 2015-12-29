@@ -20,6 +20,15 @@ export function setState(state) {
   };
 }
 
+export function selectTile(tile) {
+  return {
+    type: 'SELECT_TILE',
+    tile: tile
+  };
+}
+
+// remote actions
+
 export function drawTile(player) {
   return {
     meta: {remote: true},
@@ -28,19 +37,12 @@ export function drawTile(player) {
   };
 }
 
-export function placeTile(position) {
+export function placeTile(tile, position) {
   return {
     meta: {remote: true},
     type: 'PLACE_TILE',
+    tile: tile,
     position: position
-  };
-}
-
-export function selectTile(tile) {
-  return {
-    meta: {remote: true},
-    type: 'SELECT_TILE',
-    tile: tile
   };
 }
 

@@ -13,7 +13,9 @@ export default React.createClass({
     if (column.size > 0) {
       return <div className="column">
           {column.map(cell =>
-            <Cell cell={cell} placeTile={this.props.placeTile}/>
+            <Cell cell={cell} 
+                  placeTile={this.props.placeTile}
+                  selectedTile={this.props.selectedTile} />
           )}
         </div>
     } else {

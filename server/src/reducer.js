@@ -6,7 +6,7 @@ export default function reducer(state = INITIAL_STATE, action) {
   case 'INITIALIZE_GAME':
     return initializeGame(state, action.tileset, action.players, action.board);
   case 'DRAW_TILE':
-    return drawTile(state, action.tile, action.player);
+    return drawTile(state, action.player);
   case 'PLACE_TILE':
     return placeTile(state, action.tile, action.position);
   case 'SELECT_TILE':
@@ -16,8 +16,3 @@ export default function reducer(state = INITIAL_STATE, action) {
   }
   return state;
 }
-
-
-// const playTile = combineReducers({
-
-// })

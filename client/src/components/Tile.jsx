@@ -20,22 +20,28 @@ export default React.createClass({
       return "";
     }
   },
-  getTileStatus: function() {
+  getSelected: function() {
     if (this.props.tile) {
-      return this.props.tile.get('status');
+      if (this.props.tile.get('selected')) {
+        return 'selected'
+      } else {
+        return false
+      }
     } else {
-      return "";
+      return false
     }
   },
-  clickTile: function() {
-    if (this.getTileStatus() === "unplayed") {
-      return this.props.selectTile(this.props.tile);
+  handleClick: function() {
+    if (!this.getSelected() && !this.props.tile.get('played')) {
+      return this.props.selectTile(this.props.tile.get('id'));
+    } else {
+      return false
     }
   },
   render: function() {
-    var tileClass = classNames("tile", this.getTileName(), this.getTileStatus());
+    var tileClass = classNames("tile", this.getTileName(), this.getSelected());
     if (this.props.tile) {
-      return <div className={tileClass} onClick={() => this.clickTile()}>
+      return <div className={tileClass} onClick={() => this.handleClick()}>
         {this.getTileName()} <br/>
         id: {this.getTileId()}
         </div>

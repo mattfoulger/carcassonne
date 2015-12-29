@@ -12,7 +12,9 @@ export default React.createClass({
     if (board) {
       return <div className="board">
         {board.map(column =>
-          <Column column={column} placeTile={this.props.placeTile} />
+          <Column column={column} 
+                  placeTile={this.props.placeTile}
+                  selectedTile={this.props.selectedTile} />
         )}
         </div>
     } else {

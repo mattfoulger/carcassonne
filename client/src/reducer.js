@@ -8,11 +8,17 @@ function setConnectionState(state, connectionState, connected) {
 }
 
 function setState(state, newState) {
-  console.log("setState");
-  return state.mergeDeep(newState);
+  return state.merge(newState);
 }
 
-
+function selectTile(state, tileID) {
+  const tiles = state.get('tiles');
+  const clearedTiles = tiles.map(tile => {
+    return tile.set('selected', false);
+  })
+  const newTiles = clearedTiles.setIn([tileID, 'selected'], true);
+  return state.set('tiles', newTiles);
+}
 
 export default function(state = Map(), action) {
   switch (action.type) {
@@ -22,6 +28,8 @@ export default function(state = Map(), action) {
     return setConnectionState(state, action.state, action.connected);
   case 'SET_STATE':
     return setState(state, action.state);
+  case 'SELECT_TILE':
+    return selectTile(state, action.tile);
   }
   return state;
 }

@@ -1,21 +1,20 @@
-import {List} from 'immutable';
+import {List, Map} from 'immutable';
 
 export function deckSelector (state) {
   const deck = state.get('deck');
   const tiles = state.get('tiles');
   if (deck) {
-    return List(deck.map(function (tile) {
+    return deck.map(function (tile) {
       return tiles.get(tile).set('id', tile);
-    }));
+    });
   }
-
 }
 
 export function boardSelector (state) {
   const board = state.get('board');
   const tiles = state.get('tiles');
   if (board) {
-    return List(board.map(function (column) {
+    return board.map(function (column) {
       return column.map(function (cell) {
         const id = cell.get('contents');
         if (id === "empty") {
@@ -25,7 +24,30 @@ export function boardSelector (state) {
           return cell.set('contents', tile)
         }
       })
+    });
+  }
+}
+
+export function playersSelector (state) {
+  const players = state.get('players');
+  const tiles = state.get('tiles');
+  if (players) {
+    return Map(players.map(function (player) {
+      const hand = player.get('hand');
+      const newHand = List(hand.map(function (tile) {
+        return tiles.get(tile).set('id', tile);
+      }));
+      return player.set('hand', newHand);
     }));
   }
+}
 
+export function selectedTileSelector (state) {
+  const tiles = state.get('tiles');
+  if (tiles) {
+    const selectedTile = tiles.find(tile => {
+      return tile.get('selected')
+    })
+    return selectedTile
+  }
 }

@@ -20,7 +20,8 @@ export default React.createClass({
     if (this.props.deck) {
       return <div className="deck">
         <div>({this.getDeckSize()}) remaining</div>
-        <Tile tile={this.getTopTile()}/>
+        <Tile tile={this.getTopTile()}
+              selectTile={this.props.selectTile} />
       </div>;
     } else {
       return null

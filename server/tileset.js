@@ -6,11 +6,20 @@ const allTiles = fromJS(tiles());
 export function tileset (options) {
   var deck = {};
   var key = 0;
+  var initialState = {
+    owner: false,
+    played: false,
+    placed: false,
+    selected: false,
+    rotation: false
+  }
 
   function addTile (tilename, amount) {
     for (var i = 0; i < amount; i++) {
       key += 1;
-      const tile = allTiles.get(tilename);
+      const tile = allTiles.get(tilename)
+                           .set('id', key.toString())
+                           .merge(initialState)
       deck[key] = tile;
     }
   }

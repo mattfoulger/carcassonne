@@ -8,6 +8,20 @@ require('../../sass/Board.scss');
 export default React.createClass({
   mixins: [PureRenderMixin],
 
+  getPosition: function() {
+    return this.props.cell.get('position');
+  },
+
+  getSelectedTile: function() {
+    return this.props.selectedTile;
+  },
+
+  handleClick: function() {
+    if (this.props.cell && this.props.cell.get('contents') === "empty" && this.getSelectedTile() ) {
+      this.props.placeTile(this.getSelectedTile().get('id'), this.getPosition());
+    }
+  },
+
   render: function() {
     var cell = this.props.cell;
     var cellContents;
@@ -17,7 +31,7 @@ export default React.createClass({
       cellContents = "empty";
     }
     return <div className="cell"
-      onClick={() => this.props.placeTile(cell.get('position'))}>
+      onClick={() => this.handleClick()}>
         { cellContents }
       </div>
   }

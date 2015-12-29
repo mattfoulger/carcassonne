@@ -7,21 +7,20 @@ require('../../sass/Hand.scss');
 export default React.createClass({
   mixins: [PureRenderMixin],
   getHand: function() {
-    return this.props.hand || [];
-  },
-  getPlayer: function() {
-    return this.props.player || "";
+    return this.props.hand;
   },
 
   render: function() {
-    return <div className="hand">
-      <div className="player-name-wrapper">{this.props.player}</div>
-      <div className="pieces-wrapper">Pieces go here</div>
-      <div className="tiles-wrapper">
+    if (this.getHand) {
+      return <div className="hand">
         {this.getHand().map(tile =>
-          <Tile tile={tile} key={tile.get('id')} selectTile={this.props.selectTile}/>
+          <Tile tile={tile}
+                key={tile.get('id')}
+                selectTile={this.props.selectTile}/>
         )}
-      </div>
-    </div>;
+      </div>;
+    } else {
+      return null
+    }
   }
 });

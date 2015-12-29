@@ -2,10 +2,10 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import Deck from './Deck';
-import Hands from './Hands';
+import Players from './Players';
 import Board from './Board';
 import * as actionCreators from '../action_creators';
-import {deckSelector, boardSelector} from '../selectors';
+import {deckSelector, boardSelector, playersSelector, selectedTileSelector} from '../selectors';
 
 export const Game = React.createClass({
   mixins: [PureRenderMixin],
@@ -17,8 +17,8 @@ export const Game = React.createClass({
       return <div>
         <Deck deck={this.props.deck}
               selectTile={this.props.selectTile}/>
-        <Board board={this.props.board} placeTile={this.props.placeTile} />
-        
+        <Players players={this.props.players}
+              selectTile={this.props.selectTile}/>        
         <button
           onClick={() => this.props.drawTile(this.props.currentPlayer)}>
           Draw a tile
@@ -27,6 +27,10 @@ export const Game = React.createClass({
           onClick={() => this.props.endTurn(this.props.currentPlayer)}>
           End turn
         </button>
+        <Board  board={this.props.board} 
+                placeTile={this.props.placeTile}
+                selectedTile={this.props.selectedTile} />
+
         
       </div>;
     } else {
@@ -35,16 +39,14 @@ export const Game = React.createClass({
   }
 });
 
-// <Hands hands={this.props.hands}
-//              selectTile={this.props.selectTile}/>
-
 function mapStateToProps(state) {
   return {
     deck: deckSelector(state),
     tiles: state.get('tiles'),
-    players: state.get('players'),
+    players: playersSelector(state),
     currentPlayer: state.get('currentPlayer'),
-    board: boardSelector(state)
+    board: boardSelector(state),
+    selectedTile: selectedTileSelector(state)
   };
 }
 
