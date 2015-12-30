@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import classNames from 'classnames';
-import Column from './Column'
+import Cell from './Cell'
 
 require('../../sass/Board.scss');
 
@@ -11,8 +11,8 @@ export default React.createClass({
     var board = this.props.board
     if (board) {
       return <div className="board">
-        {board.map(column =>
-          <Column column={column} 
+        {board.flatten(true).map(cell =>
+            <Cell cell={cell} 
                   placeTile={this.props.placeTile}
                   selectedTile={this.props.selectedTile} />
         )}

@@ -92,13 +92,13 @@ function getNeighbors(position) {
       y: position.y
     };
   }
-  if (right <= 18) {
+  if (right <= 17) {
     neighbors.right = {
       x: right,
       y: position.y
     };
   }
-  if (above <= 18) {
+  if (above <= 17) {
     neighbors.above = {
       x: position.x,
       y: above

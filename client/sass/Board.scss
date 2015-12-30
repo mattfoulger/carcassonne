@@ -1,11 +1,9 @@
 .board {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
   width: 1584px;
-  overflow: scroll;
-}
-
-.column {
-  width: 88px;
-  float: left;
+  height: 1584px;
 }
 
 .cell {
