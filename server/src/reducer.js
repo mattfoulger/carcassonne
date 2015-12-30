@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux'
-import {INITIAL_STATE, initializeGame, drawTile, placeTile, selectTile, endTurn} from './actions';
+import {List, Map, fromJS} from 'immutable';
+
+import initializeGame from './actions/initializeGame';
+import drawTile from './actions/drawTile';
+import placeTile from './actions/placeTile';
+import endTurn from './actions/endTurn';
+
+const INITIAL_STATE = Map();
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -9,8 +16,6 @@ export default function reducer(state = INITIAL_STATE, action) {
     return drawTile(state, action.player);
   case 'PLACE_TILE':
     return placeTile(state, action.tile, action.position);
-  case 'SELECT_TILE':
-    return selectTile(state, action.tile)
   case 'END_TURN':
     return endTurn(state, action.player);
   }

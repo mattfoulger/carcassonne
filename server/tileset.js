@@ -11,7 +11,7 @@ export function tileset (options) {
     played: false,
     placed: false,
     selected: false,
-    rotation: false
+    rotation: 1
   }
 
   function addTile (tilename, amount) {
