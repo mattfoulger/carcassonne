@@ -7,6 +7,8 @@ import Board from './Board';
 import * as actionCreators from '../action_creators';
 import {deckSelector, boardSelector, playersSelector, selectedTileSelector} from '../selectors';
 
+require('../../sass/Game.scss');
+
 export const Game = React.createClass({
   mixins: [PureRenderMixin],
   getPlayers: function() {
@@ -15,18 +17,21 @@ export const Game = React.createClass({
   render: function() {
     if (this.props.deck) {
       return <div>
-        <Deck deck={this.props.deck}
-              selectTile={this.props.selectTile}/>
-        <Players players={this.props.players}
-              selectTile={this.props.selectTile}/>        
-        <button
-          onClick={() => this.props.drawTile(this.props.currentPlayer)}>
-          Draw a tile
-        </button>
-        <button
-          onClick={() => this.props.endTurn(this.props.currentPlayer)}>
-          End turn
-        </button>
+        <div className="controls">
+          <Deck deck={this.props.deck}
+                selectTile={this.props.selectTile}/>
+          <Players players={this.props.players}
+                selectTile={this.props.selectTile}
+                currentPlayer={this.props.currentPlayer}/>        
+          <button
+            onClick={() => this.props.drawTile(this.props.currentPlayer)}>
+            Draw a tile
+          </button>
+          <button
+            onClick={() => this.props.endTurn()}>
+            End turn
+          </button>
+        </div>
         <Board  board={this.props.board} 
                 placeTile={this.props.placeTile}
                 selectedTile={this.props.selectedTile} />

@@ -12,11 +12,18 @@ export default React.createClass({
   },
   render: function() {
     if (this.props.players) {
-      return <div className = "hands-area">
-        {this.getPlayers().map(function (player) {
-          return <Player player={player}
-                         key={player.get('name')}
-                         selectTile={this.props.selectTile}/>
+      return <div className = "players">
+        {this.getPlayers().map(function (player, key) {
+          var props = {};
+          props.player = player;
+          props.key = player.get('name');
+          props.selectTile = this.props.selectTile;
+          if (key == this.props.currentPlayer) {
+            props.current = true;
+          } else {
+            props.current = false;
+          }
+          return <Player {...props} />
         }.bind(this))}
       </div>
     } else {

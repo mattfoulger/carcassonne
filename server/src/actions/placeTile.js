@@ -1,13 +1,16 @@
-export default function (state, tileID, position) {
+export default function (state, tileID, position, isStartTile) {
   const contents = state.getIn(['board', position.x, position.y, 'contents']);
 
   if (contents === "empty") {
     const deck = state.get('deck');
     const edgeState = setEdges(state, tileID, position);
 
-    if (deck.last() === tileID) {
+    if (isStartTile) {
       return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .setIn(['tiles', tileID, 'status'], 'placed')
+                .setIn(['tiles', tileID, 'placed'], true)
+    } else if (deck.last() === tileID) {
+      return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
+                .setIn(['tiles', tileID, 'placed'], true)
                 .set('deck', deck.pop());
     } else {
       const current = state.get('currentPlayer').toString();
@@ -21,7 +24,7 @@ export default function (state, tileID, position) {
           return tile != tileID;
         });
         return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .setIn(['tiles', tileID, 'placed'], 'true')
+                .setIn(['tiles', tileID, 'placed'], true)
                 .setIn(['players', current, 'hand'], newHand);
       } else {
         return state;

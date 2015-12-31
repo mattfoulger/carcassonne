@@ -8,33 +8,22 @@ require('../../sass/Board.scss');
 export default React.createClass({
   mixins: [PureRenderMixin],
 
-  getPosition: function() {
-    return this.props.cell.get('position');
-  },
-
-  getSelectedTile: function() {
-    return this.props.selectedTile;
-  },
-
-  handleClick: function() {
-    if (this.props.cell && this.props.cell.get('contents') === "empty" && this.getSelectedTile() ) {
-      this.props.placeTile(this.getSelectedTile().get('id'), this.getPosition());
-    }
-  },
-
   render: function() {
     var cell = this.props.cell;
-    var cellContents;
+    var cellClass = classNames("cell", {legal: this.props.legal})
+
+    var cellContents = "";
+    var cellPos = "";
+    var cellEdges = "";
     if ( cell && cell.get('contents') != "empty" ) {
       cellContents = <Tile tile={cell.get('contents')} key={cell.getIn('contents', 'id')}/>;
     } else {
-      cellContents = "empty";
+      cellContents = "";
     }
-    return <div className="cell"
-      onClick={() => this.handleClick()}>
+
+    return <div onClick={this.props.handleClick} className={cellClass} >
         { cellContents }
       </div>
   }
 });
-
 

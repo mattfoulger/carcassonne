@@ -58,15 +58,6 @@ export default function () {
       }
     },
     tile007: {
-      name: "tile-006",
-      edges: {
-        top: "CITY",
-        right: "CITY",
-        bottom: "FIELD",
-        left: "FIELD"
-      }
-    },
-    tile008: {
       name: "tile-007",
       edges: {
         top: "CITY",
@@ -75,8 +66,17 @@ export default function () {
         left: "FIELD"
       }
     },
-    tile009: {
+    tile008: {
       name: "tile-008",
+      edges: {
+        top: "CITY",
+        right: "CITY",
+        bottom: "FIELD",
+        left: "FIELD"
+      }
+    },
+    tile009: {
+      name: "tile-009",
       edges: {
         top: "CITY",
         right: "CITY",

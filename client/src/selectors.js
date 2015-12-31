@@ -14,8 +14,8 @@ export function boardSelector (state) {
   const board = state.get('board');
   const tiles = state.get('tiles');
   if (board) {
-    return board.map(function (column) {
-      return column.map(function (cell) {
+    return board.flatten(true).map(function (cell) {
+      // return column.map(function (cell) {
         const id = cell.get('contents');
         if (id === "empty") {
           return cell
@@ -23,7 +23,7 @@ export function boardSelector (state) {
           const tile = tiles.get(id).set('id', id);
           return cell.set('contents', tile)
         }
-      })
+      // })
     });
   }
 }

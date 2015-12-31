@@ -46,10 +46,9 @@ export function placeTile(tile, position) {
   };
 }
 
-export function endTurn(player) {
+export function endTurn() {
   return {
     meta: {remote: true},
     type: 'END_TURN',
-    player: player
   };
 }

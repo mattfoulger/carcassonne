@@ -4,9 +4,15 @@
   flex-wrap: wrap;
   width: 1584px;
   height: 1584px;
+  /*background-image: url('../src/images/table.jpg')*/
+  background: #584A3F;
 }
 
 .cell {
   width: 88px;
   height: 88px;
+}
+
+.legal {
+  background: blue;
 }

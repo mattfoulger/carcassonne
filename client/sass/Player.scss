@@ -1,5 +1,13 @@
-.player-name-wrapper {
+.player {
+  display: inline-block;
+}
+
+.player-name {
   padding: 3px;
+}
+
+.player-name.current-player {
+  color: red;
 }
 
 .pieces-wrapper {
