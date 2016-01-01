@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import {List, Map, fromJS} from 'immutable';
 
-import initializeGame from './actions/initializeGame';
-import drawTile from './actions/drawTile';
-import placeTile from './actions/placeTile';
-import endTurn from './actions/endTurn';
-import startTurn from './actions/startTurn';
+import initializeGame from './reducers/initializeGame';
+import drawTile from './reducers/drawTile';
+import placeTile from './reducers/placeTile';
+import endTurn from './reducers/endTurn';
+import startTurn from './reducers/startTurn';
 
 const INITIAL_STATE = Map();
 
