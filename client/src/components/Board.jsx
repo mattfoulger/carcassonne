@@ -27,11 +27,11 @@ export default React.createClass({
           var props = {};
           props.cell = cell;
           props.key = i;
-          props.legal = false;
-          props.handleClick = function() {return false};
+          props.legal = this.getLegalMoves(cell);
+          props.commitTile = this.props.commitTile;
+          props.rotateTile = this.props.rotateTile;
 
-          if (this.getLegalMoves(cell)) {
-            props.legal = true;
+          if (props.legal) {
             props.handleClick = this.handleClick.bind(this, cell);
           }
           

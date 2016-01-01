@@ -11,10 +11,10 @@ export default function (state, tileID, position, rotation, isStartTile) {
     // pop the tile from deck or hand, unless starting tile
     if (isStartTile) {
       return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .setIn(['tiles', tileID, 'placed'], true)
+                .setIn(['tiles', tileID, 'committed'], true)
     } else if (deck.last() === tileID) {
       return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .mergeIn(['tiles', tileID], {placed: true, rotation: rotation})
+                .mergeIn(['tiles', tileID], {committed: true, placed: false, rotation: rotation})
                 .set('deck', deck.pop());
     } else {
       const current = state.get('currentPlayer').toString();
@@ -28,7 +28,7 @@ export default function (state, tileID, position, rotation, isStartTile) {
           return tile != tileID;
         });
         return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .mergeIn(['tiles', tileID], {placed: true, rotation: rotation})
+                .mergeIn(['tiles', tileID], {committed: true, placed: false, rotation: rotation})
                 .setIn(['players', current, 'hand'], newHand);
       } else {
         return state;

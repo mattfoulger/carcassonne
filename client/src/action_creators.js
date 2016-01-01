@@ -27,6 +27,23 @@ export function selectTile(tile) {
   };
 }
 
+export function placeTile(tile, position, rotation) {
+  return {
+    type: 'PLACE_TILE',
+    tile: tile,
+    position: position,
+    rotation: rotation
+  };
+}
+
+export function rotateTile(tile, position) {
+  return {
+    type: 'ROTATE_TILE',
+    tile: tile,
+    position: position,
+  };
+}
+
 // remote actions
 
 export function drawTile(player) {
@@ -37,10 +54,10 @@ export function drawTile(player) {
   };
 }
 
-export function placeTile(tile, position, rotation) {
+export function commitTile(tile, position, rotation) {
   return {
     meta: {remote: true},
-    type: 'PLACE_TILE',
+    type: 'COMMIT_TILE',
     tile: tile,
     position: position,
     rotation: rotation

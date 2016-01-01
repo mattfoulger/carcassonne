@@ -34,6 +34,8 @@ export const Game = React.createClass({
         </div>
         <Board  board={this.props.board} 
                 placeTile={this.props.placeTile}
+                commitTile={this.props.commitTile}
+                rotateTile={this.props.rotateTile}
                 selectedTile={this.props.selectedTile} />
 
         

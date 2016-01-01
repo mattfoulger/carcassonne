@@ -3,7 +3,7 @@ import {List, Map, fromJS} from 'immutable';
 
 import initializeGame from './reducers/initializeGame';
 import drawTile from './reducers/drawTile';
-import placeTile from './reducers/placeTile';
+import commitTile from './reducers/commitTile';
 import endTurn from './reducers/endTurn';
 import startTurn from './reducers/startTurn';
 
@@ -15,8 +15,8 @@ export default function reducer(state = INITIAL_STATE, action) {
     return initializeGame(state, action.tileset, action.players);
   case 'DRAW_TILE':
     return startTurn(endTurn(drawTile(state, action.player)));
-  case 'PLACE_TILE':
-    return startTurn(endTurn(placeTile(state, action.tile, action.position, action.rotation)));
+  case 'COMMIT_TILE':
+    return startTurn(endTurn(commitTile(state, action.tile, action.position, action.rotation)));
   case 'END_TURN':
     return startTurn(endTurn(state));
   }

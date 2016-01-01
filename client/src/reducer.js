@@ -1,5 +1,8 @@
 import {List, Map} from 'immutable';
 import setLegalMoves from './reducers/setLegalMoves'
+import placeTile from './reducers/placeTile'
+import clearPlaced from './reducers/clearPlaced'
+import rotateTile from './reducers/rotateTile'
 
 function setConnectionState(state, connectionState, connected) {
   return state.set('connection', Map({
@@ -30,7 +33,11 @@ export default function(state = Map(), action) {
   case 'SET_STATE':
     return setState(state, action.state);
   case 'SELECT_TILE':
-    return setLegalMoves(selectTile(state, action.tile));
+    return setLegalMoves(selectTile(clearPlaced(state), action.tile));
+  case 'PLACE_TILE':
+    return placeTile(clearPlaced(state), action.tile, action.position, action.rotation);
+  case 'ROTATE_TILE':
+    return rotateTile(state, action.tile, action.position);
   }
   return state;
 }

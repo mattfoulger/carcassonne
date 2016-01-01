@@ -13,11 +13,24 @@ export default React.createClass({
   render: function() {
     if (this.getHand) {
       return <div className="hand">
-        {this.getHand().map(tile =>
-          <Tile tile={tile}
-                key={tile.get('id')}
-                selectTile={this.props.selectTile}/>
-        )}
+        {this.getHand().map(tile => {
+          var props = {}
+          props.name = tile.get('name');
+          props.id = tile.get('id');
+          props.selected = tile.get('selected');
+          props.placed = tile.get('placed');
+
+          if (!props.selected && this.props.current) {
+            props.handleClick = function() {
+              return this.props.selectTile(props.id);
+            }.bind(this, props);
+          } else {
+            props.handleClick = function() {
+              return false;
+            };
+          }
+          return <Tile key={props.id} {...props}/>
+        })}
       </div>;
     } else {
       return null

@@ -12,16 +12,29 @@ export default React.createClass({
       return 0;
     }
   },
-  getTopTile: function() {
-    return this.props.deck.last();
-  },
 
   render: function() {
     if (this.props.deck) {
+      const tile = this.props.deck.last();
+      var props = {}
+      props.name = tile.get('name');
+      props.id = tile.get('id');
+      props.selected = tile.get('selected');
+      props.placed = tile.get('placed');
+
+      if (!props.selected) {
+        props.handleClick = function() {
+          return this.props.selectTile(props.id);
+        }.bind(this, props);
+      } else {
+        props.handleClick = function() {
+          return false;
+        };
+      }
+
       return <div className="deck">
-        <div>({this.getDeckSize()}) remaining</div>
-        <Tile tile={this.getTopTile()}
-              selectTile={this.props.selectTile} />
+        <div>({this.props.deck.size}) remaining</div>
+        <Tile key={props.id} {...props} />
       </div>;
     } else {
       return null

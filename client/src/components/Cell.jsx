@@ -10,20 +10,41 @@ export default React.createClass({
 
   render: function() {
     var cell = this.props.cell;
+    var position = cell.get('position');
     var cellClass = classNames("cell", {legal: this.props.legal})
-
     var cellContents = "";
-    var cellPos = "";
-    var cellEdges = "";
+    
     if ( cell && cell.get('contents') != "empty" ) {
-      cellContents = <Tile tile={cell.get('contents')} key={cell.getIn('contents', 'id')}/>;
-    } else {
-      cellContents = "";
-    }
+      var tile = cell.get('contents');
+      var props = {}
+      props.name = tile.get('name');
+      props.id = tile.get('id');
+      props.selected = tile.get('selected');
+      props.placed = tile.get('placed');
+      props.committed = tile.get('committed');
+      props.rotation = tile.get('rotation');
 
-    return <div onClick={this.props.handleClick} className={cellClass} >
-        { cellContents }
-      </div>
+      if (props.selected && props.placed && !props.committed) {
+        if (this.props.legal && this.props.legal.length > 1) {
+          props.handleClick = function() {
+            return this.props.rotateTile(props.id, position);
+          }.bind(this, props, position);
+        }
+      } else {
+        props.handleClick = function() {
+          return false;
+        };
+      }
+      return <div className={cellClass} >
+        <Tile key={props.id} {...props} />
+      </div>;
+    } else {
+      return <div onClick={this.props.handleClick} className={cellClass} ></div>
+    }
   }
 });
+
+// props.handleClick = function() {
+//   return this.props.commitTile(props.id, position, props.rotation);
+// }.bind(this, props, position);
 

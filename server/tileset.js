@@ -8,7 +8,7 @@ export function tileset (options) {
   var key = 0;
   var initialState = {
     owner: false,
-    played: false,
+    committed: false,
     placed: false,
     selected: false,
     rotation: 1

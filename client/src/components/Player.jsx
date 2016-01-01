@@ -29,7 +29,8 @@ export default React.createClass({
         <div className="pieces-wrapper">Pieces go here</div>
         <div className="hand-wrapper">
           <Hand hand={this.getHand()}
-                selectTile={this.props.selectTile}/>
+                selectTile={this.props.selectTile}
+                current={this.props.current}/>
         </div>
       </div>;
     }
