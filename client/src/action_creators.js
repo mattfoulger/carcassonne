@@ -37,12 +37,13 @@ export function drawTile(player) {
   };
 }
 
-export function placeTile(tile, position) {
+export function placeTile(tile, position, rotation) {
   return {
     meta: {remote: true},
     type: 'PLACE_TILE',
     tile: tile,
-    position: position
+    position: position,
+    rotation: rotation
   };
 }
 

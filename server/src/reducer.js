@@ -16,7 +16,7 @@ export default function reducer(state = INITIAL_STATE, action) {
   case 'DRAW_TILE':
     return startTurn(endTurn(drawTile(state, action.player)));
   case 'PLACE_TILE':
-    return startTurn(endTurn(placeTile(state, action.tile, action.position)));
+    return startTurn(endTurn(placeTile(state, action.tile, action.position, action.rotation)));
   case 'END_TURN':
     return startTurn(endTurn(state));
   }

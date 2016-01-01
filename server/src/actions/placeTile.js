@@ -1,10 +1,14 @@
-export default function (state, tileID, position, isStartTile) {
-  const contents = state.getIn(['board', position.x, position.y, 'contents']);
+import checkLegalPlacement from '../utilities/checkLegalPlacement'
 
-  if (contents === "empty") {
+export default function (state, tileID, position, rotation, isStartTile) {
+  const cell = state.getIn(['board', position.x, position.y]);
+  const tile = state.getIn(['tiles', tileID]);
+
+  if (checkLegalPlacement(cell, tile, rotation, isStartTile)) {
     const deck = state.get('deck');
     const edgeState = setEdges(state, tileID, position);
 
+    // find where the tile is and pop it from deck or hand
     if (isStartTile) {
       return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
                 .setIn(['tiles', tileID, 'placed'], true)

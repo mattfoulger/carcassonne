@@ -13,35 +13,11 @@ export default React.createClass({
   getSelectedTile: function() {
     return this.props.selectedTile;
   },
-  getLegal: function(cell) {
-    var tile = this.getSelectedTile();
-    if (tile && cell.get('contents') == "empty") {
-      const cellEdges = cell.get('edges');
-      const tileEdges = tile.get('edges');
-      if (
-        (cellEdges.get('left') == "empty") &&
-        (cellEdges.get('right') == "empty") &&
-        (cellEdges.get('top') == "empty")  &&
-        (cellEdges.get('bottom') == "empty")
-      ) {
-          return false
-      }
-      if (
-        ((cellEdges.get('left') == tileEdges.get('left')) || (cellEdges.get('left') == "empty")) &&
-        ((cellEdges.get('right') == tileEdges.get('right')) || (cellEdges.get('right') == "empty")) &&
-        ((cellEdges.get('top') == tileEdges.get('top')) || (cellEdges.get('top') == "empty")) &&
-        ((cellEdges.get('bottom') == tileEdges.get('bottom')) || (cellEdges.get('bottom') == "empty"))
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
+  getLegalMoves: function(cell) {
+    return cell.get('legal');
   },
   handleClick: function(cell) {
-    this.props.placeTile(this.getSelectedTile().get('id'), this.getPosition(cell));
+    this.props.placeTile(this.getSelectedTile().get('id'), this.getPosition(cell), this.getLegalMoves(cell)[0]);
   },
   render: function() {
     var board = this.props.board
@@ -54,7 +30,7 @@ export default React.createClass({
           props.legal = false;
           props.handleClick = function() {return false};
 
-          if (this.getLegal(cell)) {
+          if (this.getLegalMoves(cell)) {
             props.legal = true;
             props.handleClick = this.handleClick.bind(this, cell);
           }
