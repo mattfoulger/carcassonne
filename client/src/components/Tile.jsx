@@ -22,13 +22,24 @@ export default React.createClass({
   },
   getSelected: function() {
     if (this.props.tile) {
-      if (this.props.tile.get('selected')) {
-        return 'selected'
-      } else {
-        return false
-      }
+      return this.props.tile.get('selected');
     } else {
       return false
+    }
+  },
+  getRotationClass: function() {
+    if (this.props.tile) {
+      switch (this.props.tile.get('rotation')) {
+        case 2:
+          return "rotation-2";
+          break;
+        case 3:
+          return "rotation-3";
+          break;
+        case 4:
+          return "rotation-4";
+          break;
+      }
     }
   },
   handleClick: function() {
@@ -39,7 +50,7 @@ export default React.createClass({
     }
   },
   render: function() {
-    var tileClass = classNames("tile", this.getTileName(), this.getSelected());
+    var tileClass = classNames("tile", this.getTileName(), {selected: this.getSelected()}, this.getRotationClass());
     if (this.props.tile) {
       return <div className={tileClass} onClick={() => this.handleClick()}>
         {this.getTileName()} <br/>

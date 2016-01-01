@@ -1,20 +1,20 @@
-import checkLegalPlacement from '../utilities/checkLegalPlacement'
+import {checkPlacement, transformEdges} from '../utilities/tile_placement_utilities'
 
 export default function (state, tileID, position, rotation, isStartTile) {
   const cell = state.getIn(['board', position.x, position.y]);
   const tile = state.getIn(['tiles', tileID]);
 
-  if (checkLegalPlacement(cell, tile, rotation, isStartTile)) {
+  if (checkPlacement(cell, tile, rotation, isStartTile)) {
     const deck = state.get('deck');
-    const edgeState = setEdges(state, tileID, position);
+    const edgeState = setEdges(state, tile, position, rotation);
 
-    // find where the tile is and pop it from deck or hand
+    // pop the tile from deck or hand, unless starting tile
     if (isStartTile) {
       return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
                 .setIn(['tiles', tileID, 'placed'], true)
     } else if (deck.last() === tileID) {
       return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .setIn(['tiles', tileID, 'placed'], true)
+                .mergeIn(['tiles', tileID], {placed: true, rotation: rotation})
                 .set('deck', deck.pop());
     } else {
       const current = state.get('currentPlayer').toString();
@@ -28,7 +28,7 @@ export default function (state, tileID, position, rotation, isStartTile) {
           return tile != tileID;
         });
         return edgeState.setIn(['board', position.x, position.y, 'contents'], tileID)
-                .setIn(['tiles', tileID, 'placed'], true)
+                .mergeIn(['tiles', tileID], {placed: true, rotation: rotation})
                 .setIn(['players', current, 'hand'], newHand);
       } else {
         return state;
@@ -39,8 +39,8 @@ export default function (state, tileID, position, rotation, isStartTile) {
   }
 }
 
-function setEdges(state, tileID, position) {
-  const edges = state.getIn(['tiles', tileID, 'edges']);
+function setEdges(state, tile, position, rotation) {
+  const edges = transformEdges(tile.get('edges'), rotation);
   const left = edges.get('left');
   const right = edges.get('right');
   const top = edges.get('top');
