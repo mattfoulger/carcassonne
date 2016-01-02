@@ -30,7 +30,9 @@ export default React.createClass({
         <div className="hand-wrapper">
           <Hand hand={this.getHand()}
                 selectTile={this.props.selectTile}
-                current={this.props.current}/>
+                current={this.props.current}
+                placedTilePosition={this.props.placedTilePosition}
+                commitTile={this.props.commitTile} />
         </div>
       </div>;
     }

@@ -25,7 +25,9 @@ export const Game = React.createClass({
                 commitTile={this.props.commitTile} />
           <Players players={this.props.players}
                 selectTile={this.props.selectTile}
-                currentPlayer={this.props.currentPlayer}/>        
+                currentPlayer={this.props.currentPlayer}
+                placedTilePosition={this.props.placedTilePosition}
+                commitTile={this.props.commitTile} />        
           <button
             onClick={() => this.props.drawTile(this.props.currentPlayer)}>
             Draw a tile

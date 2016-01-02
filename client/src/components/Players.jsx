@@ -18,6 +18,9 @@ export default React.createClass({
           props.player = player;
           props.key = player.get('name');
           props.selectTile = this.props.selectTile;
+          props.placedTilePosition = this.props.placedTilePosition;
+          props.commitTile = this.props.commitTile;
+
           if (key == this.props.currentPlayer) {
             props.current = true;
           } else {

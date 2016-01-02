@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Tile from './Tile';
+import PlacePiece from './PlacePiece';
 
 require('../../sass/Hand.scss');
 
@@ -15,10 +16,17 @@ export default React.createClass({
       return <div className="hand">
         {this.getHand().map(tile => {
           var props = {}
-          props.name = tile.get('name');
           props.id = tile.get('id');
+
+          if (tile.get('placed')) {
+            props.handleClick = function() {
+              return this.props.commitTile(props.id, this.props.placedTilePosition, tile.get('rotation'));
+            }.bind(this);
+            return <PlacePiece key={props.id} {...props} />
+          }
+
+          props.name = tile.get('name');
           props.selected = tile.get('selected');
-          props.placed = tile.get('placed');
 
           if (!props.selected && this.props.current) {
             props.handleClick = function() {
