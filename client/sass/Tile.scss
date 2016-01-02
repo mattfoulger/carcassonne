@@ -10,35 +10,86 @@
 }
 
 .tile {
+  position: relative;
   display: inline-block;
   width: 88px;
   height: 88px;
-    &.unplayed {
+  /*transition:transform .4s;*/
+    /*&.unplayed {
       @include transition(all 250ms);
       @include shadow(1);
       &:hover {
         @include shadow(5);
         @include transform(translateY(-5px));
       }
-    }
+    }*/
     &.selected {
       box-shadow: 0 0px 10px rgba(255,0,0,0.75);
     }
-    &.placed {
-      
-    }
-    &.committed {
-    }
+}
+
+.rotation-1 {
+  transform:rotate(0deg);
 }
 
 .rotation-2 {
-  transform: rotate(90deg);
+  transform:rotate(90deg);
 }
 
 .rotation-3 {
-  transform: rotate(180deg);
+  transform:rotate(180deg);
 }
 
 .rotation-4 {
-  transform: rotate(270deg);
+  transform:rotate(270deg);
+}
+
+@keyframes lastTurn{
+  0%{
+    transform:scale(270deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes firstTurn{
+  0%{
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(90deg);
+  }
+}
+
+@keyframes secondTurn{
+  0%{
+    transform:rotate(90deg);
+  }
+  100%{
+    transform:rotate(180deg);
+  }
+}
+
+@keyframes thirdTurn{
+  0%{
+    transform:rotate(180deg);
+  }
+  100%{
+    transform:rotate(270deg);
+  }
+}
+
+.rotator:after {
+  content: "";
+  background-image: url("../src/images/rotator.png");
+  background-size: 50%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
 }

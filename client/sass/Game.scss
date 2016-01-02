@@ -9,3 +9,13 @@
   display: inline-block;
 }
 
+.place-piece {
+  position: relative;
+  display: inline-block;
+  width: 88px;
+  height: 88px;
+  background: url("../src/images/meeple.png");
+  background-size: 70%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}

@@ -54,11 +54,11 @@ export function drawTile(player) {
   };
 }
 
-export function commitTile(tile, position, rotation) {
+export function commitTile(tileID, position, rotation) {
   return {
     meta: {remote: true},
     type: 'COMMIT_TILE',
-    tile: tile,
+    tile: tileID,
     position: position,
     rotation: rotation
   };

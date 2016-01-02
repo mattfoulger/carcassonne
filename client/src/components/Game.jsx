@@ -19,7 +19,10 @@ export const Game = React.createClass({
       return <div>
         <div className="controls">
           <Deck deck={this.props.deck}
-                selectTile={this.props.selectTile}/>
+                selectTile={this.props.selectTile}
+                selectedTile={this.props.selectedTile}
+                placedTilePosition={this.props.placedTilePosition}
+                commitTile={this.props.commitTile} />
           <Players players={this.props.players}
                 selectTile={this.props.selectTile}
                 currentPlayer={this.props.currentPlayer}/>        
@@ -34,7 +37,6 @@ export const Game = React.createClass({
         </div>
         <Board  board={this.props.board} 
                 placeTile={this.props.placeTile}
-                commitTile={this.props.commitTile}
                 rotateTile={this.props.rotateTile}
                 selectedTile={this.props.selectedTile} />
 
@@ -53,7 +55,8 @@ function mapStateToProps(state) {
     players: playersSelector(state),
     currentPlayer: state.get('currentPlayer'),
     board: boardSelector(state),
-    selectedTile: selectedTileSelector(state)
+    selectedTile: selectedTileSelector(state),
+    placedTilePosition: state.get('placedTilePosition')
   };
 }
 

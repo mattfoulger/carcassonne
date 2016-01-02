@@ -9,6 +9,9 @@ export default React.createClass({
   
   getRotationClass: function() {
     switch (this.props.rotation) {
+      case 1:
+        return "rotation-1";
+        break;
       case 2:
         return "rotation-2";
         break;
@@ -22,7 +25,11 @@ export default React.createClass({
   },
 
   render: function() {
+    var rotatorOverlay = "";
+    if (this.props.rotator) {
+      rotatorOverlay = <div className="rotator"></div>
+    }
     var tileClass = classNames("tile", this.props.name, {selected: this.props.selected}, this.getRotationClass());
-    return <div className={tileClass} onClick={() => this.props.handleClick()}></div>
+    return <div className={tileClass} onClick={() => this.props.handleClick()}>{rotatorOverlay}</div>;
   }
 });

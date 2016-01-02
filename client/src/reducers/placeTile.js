@@ -7,6 +7,7 @@ export default function (state, tileID, position, rotation) {
   if (checkPlacement(cell, tile, rotation)) {
     return state.setIn(['board', pos.x, pos.y, 'contents'], tileID)
                    .mergeIn(['tiles', tileID], {placed: true, rotation: rotation})
+                   .set('placedTilePosition', position)
   } else {
     return state;
   }
