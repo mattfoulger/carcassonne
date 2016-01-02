@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap;
-  width: 1584px;
-  height: 1584px;
+  width: 1656px;
+  height: 1656px;
   /*background-image: url('../src/images/table.jpg')*/
   background: #584A3F;
 }
@@ -13,6 +13,7 @@
 .cell {
   width: 88px;
   height: 88px;
+  margin: 2px;
 }
 
 .legal {
