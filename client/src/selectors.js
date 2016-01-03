@@ -14,7 +14,7 @@ export function boardSelector (state) {
   const board = state.get('board');
   const tiles = state.get('tiles');
   if (board) {
-    return board.flatten(true).map(function (cell) {
+    return board.map(function (cell) {
       // return column.map(function (cell) {
         const id = cell.get('contents');
         if (id === "empty") {

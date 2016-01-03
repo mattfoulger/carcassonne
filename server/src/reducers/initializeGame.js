@@ -14,5 +14,5 @@ export default function (state, tileset, players) {
     .set('players', playerState)
     .set('board', board)
     .set('currentPlayer', currentPlayer);
-  return startTurn(commitTile(gameState, '1', {x: 8, y: 8}, 1, true));
+  return startTurn(commitTile(gameState, '1', 170, 1, true));
 };

@@ -3,15 +3,13 @@ export default function (state) {
     return tile.get('selected');
   })
 
-  const newBoard = state.get('board').map(column => {
-    return column.map(cell => {
-      var moves = getLegalMoves(cell, tile);
-      if (moves) {
-        return cell.set('legal', moves);
-      } else {
-        return cell.set('legal', false);
-      }
-    });
+  const newBoard = state.get('board').map(cell => {
+    var moves = getLegalMoves(cell, tile);
+    if (moves) {
+      return cell.set('legal', moves);
+    } else {
+      return cell.set('legal', false);
+    }
   });
 
   return state.set('board', newBoard);
@@ -50,7 +48,6 @@ export default function (state) {
       const cellEdges = cell.get('edges');
       const tileEdges = tile.get('edges');
       var legalMoves = [];
-
       if (
         (cellEdges.get('left') == "empty") &&
         (cellEdges.get('right') == "empty") &&

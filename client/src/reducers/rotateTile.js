@@ -1,8 +1,7 @@
 import {checkPlacement} from '../utilities/tile_placement_utilities'
 
-export default function (state, tileID, position) {
-  const pos = position.toJS();
-  const cell = state.getIn(['board', pos.x, pos.y]);
+export default function (state, tileID, cellID) {
+  const cell = state.getIn(['board', cellID]);
   if (!cell) {
     return state;
   }

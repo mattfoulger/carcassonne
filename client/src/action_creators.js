@@ -27,20 +27,20 @@ export function selectTile(tile) {
   };
 }
 
-export function placeTile(tile, position, rotation) {
+export function placeTile(tile, cell, rotation) {
   return {
     type: 'PLACE_TILE',
     tile: tile,
-    position: position,
+    cell: cell,
     rotation: rotation
   };
 }
 
-export function rotateTile(tile, position) {
+export function rotateTile(tile, cell) {
   return {
     type: 'ROTATE_TILE',
     tile: tile,
-    position: position,
+    cell: cell,
   };
 }
 
@@ -54,12 +54,12 @@ export function drawTile(player) {
   };
 }
 
-export function commitTile(tileID, position, rotation) {
+export function commitTile(tileID, cellID, rotation) {
   return {
     meta: {remote: true},
     type: 'COMMIT_TILE',
     tile: tileID,
-    position: position,
+    cell: cellID,
     rotation: rotation
   };
 }

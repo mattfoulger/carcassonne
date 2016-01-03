@@ -15,9 +15,8 @@ export function grid(r = 18, c = 18) {
 
   board = [];
   for (var i = 0; i < columns; i++) {
-    board.push([]);
     for (var j = 0; j < rows; j++) {
-      board[i].push({
+      board.push({
         position: {x: i, y: j},
         contents: "empty",
         edges: {

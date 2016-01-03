@@ -10,7 +10,6 @@ export default React.createClass({
 
   render: function() {
     var cell = this.props.cell;
-    var position = cell.get('position');
     var cellClass = classNames("cell", {legal: this.props.legal})
     var cellContents = "";
     var tileControls = "";
@@ -29,8 +28,8 @@ export default React.createClass({
         if (this.props.legal && this.props.legal.length > 1) {
           props.rotator = true;
           props.handleClick = function() {
-            return this.props.rotateTile(props.id, position);
-          }.bind(this, props, position);
+            return this.props.rotateTile(props.id, this.props.id);
+          }.bind(this, props);
         }
       } else {
         props.handleClick = function() {

@@ -10,8 +10,8 @@ export default React.createClass({
   getPosition: function(cell) {
     return cell.get('position');
   },
-  getSelectedTile: function() {
-    return this.props.selectedTile;
+  getSelectedTileId: function() {
+    return this.props.selectedTile.get('id');
   },
   getLegalMoves: function(cell) {
     return cell.get('legal');
@@ -26,16 +26,17 @@ export default React.createClass({
         {board.map(function(cell, i) {
           var props = {};
           props.cell = cell;
-          props.key = i;
+          props.id = i;
           props.legal = this.getLegalMoves(cell);
           props.commitTile = this.props.commitTile;
           props.rotateTile = this.props.rotateTile;
-
           if (props.legal) {
-            props.handleClick = this.handleClick.bind(this, cell);
+            props.handleClick = function(cell) {
+              this.props.placeTile(this.getSelectedTileId(), props.id, props.legal[0]);
+            }.bind(this, props);
           }
           
-          return <Cell {...props} />
+          return <Cell {...props} key={props.id}/>
         }.bind(this))}
         </div>
     } else {

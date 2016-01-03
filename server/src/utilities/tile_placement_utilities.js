@@ -1,3 +1,35 @@
+export function getCellIdByPosition (boardState, position) {
+  return boardState.findEntry(cell => {
+    var cellPos = cell.get('position').toJS();
+    return (cellPos.x == position.x && cellPos.y == position.y)
+  })[0]
+}
+
+export function getNeighbors(state, cellID) {
+  const board = state.get('board');
+  const cell = board.get(cellID);
+  var position = cell.get('position').toJS();
+  var neighbors = {};
+  var left = position.x - 1;
+  var right = position.x + 1;
+  var above = position.y + 1;
+  var below = position.y - 1;
+
+  if (left >= 0) {
+    neighbors.left = getCellIdByPosition(board, {x: left, y: position.y});
+  }
+  if (right <= 17) {
+    neighbors.right = getCellIdByPosition(board, {x: right, y: position.y});
+  }
+  if (above <= 17) {
+    neighbors.above = getCellIdByPosition(board, {x: position.x, y: above});
+  }
+  if (below >= 0) {
+    neighbors.below = getCellIdByPosition(board, {x: position.x, y: below});
+  }
+  return neighbors;
+}
+
 export function checkPlacement (cell, tile, rotation, isStartTile) {
   if (isStartTile) {
     return true

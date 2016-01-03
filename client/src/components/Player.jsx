@@ -32,7 +32,7 @@ export default React.createClass({
                 selectTile={this.props.selectTile}
                 current={this.props.current}
                 placedTilePosition={this.props.placedTilePosition}
-                commitTile={this.props.commitTile} />
+                commitTile={this.props.commitTile}/>
         </div>
       </div>;
     }

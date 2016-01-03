@@ -35,9 +35,9 @@ export default function(state = Map(), action) {
   case 'SELECT_TILE':
     return setLegalMoves(selectTile(clearPlaced(state), action.tile));
   case 'PLACE_TILE':
-    return placeTile(clearPlaced(state), action.tile, action.position, action.rotation);
+    return placeTile(clearPlaced(state), action.tile, action.cell, action.rotation);
   case 'ROTATE_TILE':
-    return rotateTile(state, action.tile, action.position);
+    return rotateTile(state, action.tile, action.cell);
   }
   return state;
 }
