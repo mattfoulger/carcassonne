@@ -1,19 +1,22 @@
-import {checkPlacement, transformEdges, getNeighbors, getCellIdByPosition} from '../utilities/tile_placement_utilities'
+import {checkPlacement, transformTile, getNeighbors, getCellIdByPosition} from '../utilities/tile_placement_utilities'
 
 export default function (state, tileID, cellID, rotation, isStartTile) {
   const cell = state.getIn(['board', cellID]);
   const tile = state.getIn(['tiles', tileID]);
+  const newTile = transformTile(tile, rotation);
 
-  if (checkPlacement(cell, tile, rotation, isStartTile)) {
+  if (checkPlacement(cell, newTile, isStartTile)) {
+    const neighbors = getNeighbors(state, cellID);
+    const newBoard = setBoard(state.get('board'), newTile, neighbors)
+                      .setIn([cellID, 'contents'], tileID);
+
     const deck = state.get('deck');
-    const edgeState = setEdges(state, tile, cellID, rotation);
-
     // pop the tile from deck or hand, unless starting tile
     if (isStartTile) {
-      return edgeState.setIn(['board', cellID, 'contents'], tileID)
+      return state.set('board', newBoard)
                 .setIn(['tiles', tileID, 'committed'], true)
     } else if (deck.last() === tileID) {
-      return edgeState.setIn(['board', cellID, 'contents'], tileID)
+      return state.set('board', newBoard)
                 .mergeIn(['tiles', tileID], {committed: true, placed: false, rotation: rotation})
                 .set('deck', deck.pop());
     } else {
@@ -27,7 +30,7 @@ export default function (state, tileID, cellID, rotation, isStartTile) {
         const newHand = hand.filter(tile => {
           return tile != tileID;
         });
-        return edgeState.setIn(['board', cellID, 'contents'], tileID)
+        return state.set('board', newBoard)
                 .mergeIn(['tiles', tileID], {committed: true, placed: false, rotation: rotation})
                 .setIn(['players', current, 'hand'], newHand);
       } else {
@@ -39,51 +42,61 @@ export default function (state, tileID, cellID, rotation, isStartTile) {
   }
 }
 
-function setEdges(state, tile, cellID, rotation) {
-  const edges = transformEdges(tile.get('edges'), rotation);
+function setBoard(board, tile, neighbors) {
+  return setEdges(board, tile, neighbors)
+}
+
+
+function setEdges(board, tile, neighbors) {
+
+  const edges = tile.get('edges');
   const left = edges.get('left');
   const right = edges.get('right');
   const top = edges.get('top');
   const bottom = edges.get('bottom');
-  const n = getNeighbors(state, cellID);
+  const n = neighbors;
   
-  function setSelf(state) {
-    return state.setIn(['board', cellID, 'edges'], edges)
+  function setSelf(board) {
+    return board.setIn([n.self, 'edges'], edges)
   }
 
-  function setLeft(state) {
+  function setLeft(board) {
     if (n.left) {
-      return state.setIn(['board', n.left, 'edges', 'right'], left);
+      console.log(board.get(n.left))
+      return board.setIn([n.left, 'edges', 'right'], left);
     } else {
-      return state;
+      return board;
     }
   }
 
-  function setRight(state) {
+  function setRight(board) {
     if (n.right) {
-      return state.setIn(['board', n.right, 'edges', 'left'], right);
+      return board.setIn([n.right, 'edges', 'left'], right);
     } else {
-      return state;
+      return board;
     }
   }
 
-  function setAbove(state) {
+  function setAbove(board) {
     if (n.above) {
-      return state.setIn(['board', n.above, 'edges', 'bottom'], top);
+      return board.setIn([n.above, 'edges', 'bottom'], top);
     } else {
-      return state;
+      return board;
     }
   }
 
-  function setBelow(state) {
+  function setBelow(board) {
     if (n.below) {
-      return state.setIn(['board', n.below, 'edges', 'top'], bottom);
+      return board.setIn([n.below, 'edges', 'top'], bottom);
     } else {
-      return state;
+      return board;
     }
   }
 
-  return setSelf(setLeft(setRight(setAbove(setBelow(state)))))
+  return setSelf(setLeft(setRight(setAbove(setBelow(board)))))
 }
+
+// function setFields (state, tile, cellID, rotation) {
+//   const edges = transformEdges(tile.get('edges'), rotation); 
 
 

@@ -7,9 +7,10 @@ export function getCellIdByPosition (boardState, position) {
 
 export function getNeighbors(state, cellID) {
   const board = state.get('board');
-  const cell = board.get(cellID);
-  var position = cell.get('position').toJS();
-  var neighbors = {};
+  const position = board.getIn([cellID, 'position']).toJS();
+  var neighbors = {
+    self: cellID
+  };
   var left = position.x - 1;
   var right = position.x + 1;
   var above = position.y + 1;
@@ -30,7 +31,7 @@ export function getNeighbors(state, cellID) {
   return neighbors;
 }
 
-export function checkPlacement (cell, tile, rotation, isStartTile) {
+export function checkPlacement (cell, tile, isStartTile) {
   if (isStartTile) {
     return true
   }
@@ -46,7 +47,7 @@ export function checkPlacement (cell, tile, rotation, isStartTile) {
         return false
     }
     
-    if (checkEdges(cellEdges, transformEdges(tileEdges, rotation))) {
+    if (checkEdges(cellEdges, tileEdges)) {
       return true;
     } else {
       return false;
@@ -56,23 +57,6 @@ export function checkPlacement (cell, tile, rotation, isStartTile) {
     return false
   } 
 }
-
-
-export function transformEdges(tileEdges, rotation) {
-  switch(rotation) {
-    case 2:
-      return tileEdges.merge({top: tileEdges.get('left'), right: tileEdges.get('top'), bottom: tileEdges.get('right'), left: tileEdges.get('bottom')})
-      break;
-    case 3:
-      return tileEdges.merge({top: tileEdges.get('bottom'), right: tileEdges.get('left'), bottom: tileEdges.get('top'), left: tileEdges.get('right')})
-      break;
-    case 4:
-      return tileEdges.merge({top: tileEdges.get('right'), right: tileEdges.get('bottom'), bottom: tileEdges.get('left'), left: tileEdges.get('top')})
-      break;
-    default:
-      return tileEdges
-  } 
-};
 
 export function checkEdges(cellEdges, tileEdges) {
   if (
@@ -86,3 +70,93 @@ export function checkEdges(cellEdges, tileEdges) {
     return false;
   }
 }
+
+export function transformTile (tile, rotation) {
+  const tileEdges = transformEdges(tile.get('edges'), rotation);
+  const tileFields = transformFields(tile.get('fields'), rotation);
+  const tileCities = transformCities(tile.get('cities'), rotation);
+  const tileRoads = transformRoads(tile.get('roads'), rotation);
+
+  return tile.merge({edges: tileEdges, fields: tileFields, cities: tileCities, roads: tileRoads})
+
+}
+
+// can use the transformEdges function for cities and roads since they have same structure
+function transformCities(tileCities, rotation) {
+  return transformEdges(tileCities, rotation);
+}
+
+function transformRoads(tileRoads, rotation) {
+  return transformEdges(tileRoads, rotation);
+}
+
+function transformEdges(tileEdges, rotation) {
+  switch(rotation) {
+    case 2:
+      return tileEdges.merge({
+        top: tileEdges.get('left'), 
+        right: tileEdges.get('top'), 
+        bottom: tileEdges.get('right'), 
+        left: tileEdges.get('bottom')})
+      break;
+    case 3:
+      return tileEdges.merge({
+        top: tileEdges.get('bottom'), 
+        right: tileEdges.get('left'), 
+        bottom: tileEdges.get('top'), 
+        left: tileEdges.get('right')})
+      break;
+    case 4:
+      return tileEdges.merge({
+        top: tileEdges.get('right'), 
+        right: tileEdges.get('bottom'), 
+        bottom: tileEdges.get('left'), 
+        left: tileEdges.get('top')})
+      break;
+    default:
+      return tileEdges
+  } 
+};
+
+function transformFields(tileFields, rotation) {
+  switch(rotation) {
+    case 2:
+      return tileFields.merge({
+        top_left: tileFields.get('left_bottom'),
+        top_right: tileFields.get('left_top'),
+        right_top: tileFields.get('top_left'),
+        right_bottom: tileFields.get('top_right'),
+        bottom_right: tileFields.get('right_top'),
+        bottom_left: tileFields.get('right_bottom'),
+        left_bottom: tileFields.get('bottom_right'),
+        left_top: tileFields.get('bottom_left')
+      })
+      break;
+    case 3:
+      return tileFields.merge({
+        top_left: tileFields.get('bottom_right'),
+        top_right: tileFields.get('bottom_left'),
+        right_top: tileFields.get('left_bottom'),
+        right_bottom: tileFields.get('left_top'),
+        bottom_right: tileFields.get('top_left'),
+        bottom_left: tileFields.get('top_right'),
+        left_bottom: tileFields.get('right_top'),
+        left_top: tileFields.get('right_bottom')
+      })
+      break;
+    case 4:
+      return tileFields.merge({
+        top_left: tileFields.get('left_bottom'),
+        top_right: tileFields.get('left_top'),
+        right_top: tileFields.get('top_left'),
+        right_bottom: tileFields.get('top_right'),
+        bottom_right: tileFields.get('right_top'),
+        bottom_left: tileFields.get('right_bottom'),
+        left_bottom: tileFields.get('bottom_right'),
+        left_top: tileFields.get('bottom_left')
+      })
+      break;
+    default:
+      return tileFields
+  } 
+};
